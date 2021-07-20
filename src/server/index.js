@@ -28,17 +28,17 @@ app.get('/test', function (req, res) {
 })
 
 const baseURL = 'https://api.meaningcloud.com/sentiment-2.1?'
-const apiKey = proces.env.API_KEY
+const apiKey = process.env.API_KEY
 let formInput = []
 
-app.post('/api', async function(req, res)) {
+app.post('/api', async function(req, res) {
     formInput = req.body.url;
     const apiCall = `${baseURL}key=${apiKey}&url=${formInput}&lang=en`
 
     const response = await fetch(apiCall)
     const data = await response.json()
     res.send(data)
-}
+})
 
 // designates what port the app will listen to for incoming requests
 app.listen(8080, function () {
